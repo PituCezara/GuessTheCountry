@@ -16,7 +16,7 @@ score = 0
 
 @app.route('/')
 def index():
-    return render_template('index_map.html')
+    return render_template('index.html')
 
 
 @app.route('/get-country')
@@ -32,7 +32,7 @@ def check_answer():
     user_answer = request.json.get('answer', '').strip()
 
     if user_answer.lower() == current_country.lower():
-        score += 10
+        score += 1
         return jsonify({'correct': True, 'score': score})
     else:
         return jsonify({'correct': False, 'score': score, 'correct_answer': current_country})
